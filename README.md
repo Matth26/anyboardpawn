@@ -4,14 +4,14 @@
 * Accelerometer ADXL345 ([datasheet](http://www.analog.com/media/en/technical-documentation/data-sheets/ADXL345.pdf))
 * Vibrating motor ([datasheet](https://www.sparkfun.com/datasheets/Robotics/310-101_datasheet.pdf))
 
-Connexion RFduino<->Accelerometer :
+RFduino<->Accelerometer connexion :
 - GPIO 6 <-> SDA
 - GPIO 5 <-> SCL
 - GPIO 2 <-> INT1
 - 3V3 <-> 3v3
 - GND <-> GND
 
-Connexion RFduino<->Vibrating motor :
+RFduino<->Vibrating motor connexion :
 - GPIO 3 <-> Vin
 - GND <-> GND
 
