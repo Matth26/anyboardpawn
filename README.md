@@ -5,15 +5,15 @@
 * Vibrating motor ([datasheet](https://www.sparkfun.com/datasheets/Robotics/310-101_datasheet.pdf))
 
 Connexion RFduino<->Accelerometer :
-GPIO 6 <-> SDA
-GPIO 5 <-> SCL
-GPIO 2 <-> INT1
-3V3 <-> 3v3
-GND <-> GND
+- GPIO 6 <-> SDA
+- GPIO 5 <-> SCL
+- GPIO 2 <-> INT1
+- 3V3 <-> 3v3
+- GND <-> GND
 
 Connexion RFduino<->Vibrating motor :
-GPIO 3 <-> Vin
-GND <-> GND
+- GPIO 3 <-> Vin
+- GND <-> GND
 
 ## libraries
 All the libraries that I use for the examples are in the folder *libraries*. They have to be put in the Arduino's libraries folder. 
