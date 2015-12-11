@@ -9,6 +9,10 @@ TokenFeedback::TokenFeedback(int pin_vibrating_motor)
 	Adafruit_8x8matrix* matrix = new Adafruit_8x8matrix();
 }
   
+void TokenFeedback::matrixConfig()
+{
+	matrix.begin(0x70);
+}
 void TokenFeedback::vibrate(int ms)
 {
 	//Serial.println("Vibrate");

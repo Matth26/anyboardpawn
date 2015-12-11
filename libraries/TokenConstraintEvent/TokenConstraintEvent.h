@@ -8,6 +8,9 @@ class TokenConstraintEvent {
       public:
 		TokenConstraintEvent();
 		uint8_t locate(uint8_t current_sector_ID, float ct);
+		void sensorConfig();
+		
+		tcs34725 rgb_sensor;
 	  private:
 	
 };

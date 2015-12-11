@@ -12,7 +12,7 @@ class TokenTokenEvent {
       public:
 		TokenTokenEvent();
 		void capConfig();
-		bool capTestProximity();
+		void capTestProximity(int* face1);
 		Adafruit_MPR121 cap;
 		
 		int ref1;

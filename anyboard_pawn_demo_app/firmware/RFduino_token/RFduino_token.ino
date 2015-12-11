@@ -2,6 +2,7 @@
 #include <WInterrupts.h>
 #include <RFduinoBLE.h>
 #include <string.h>
+
 #include <TokenFeedback.h>
 #include <TokenConstraintEvent.h>
 #include <TokenSoloEvent.h>
@@ -54,22 +55,23 @@ int single_tap = 0;
 int double_tap = 0;
 int shake = 0;
 int inactivity = 0;
+
+// Variables for Token Constraint Event
 uint8_t last_sector_ID = 0;
 uint8_t current_sector_ID = 0;
+
+// Variables for Token Token Event
 int face1 = 0;
 
 // BOARD CONSTANTS
 #define ACC_INT1_PIN 4 // Pin where the acceleromter interrupt1 is connected
-#define VIBRATING_M_PIN     3 // Pin where the vibrating motor is connected
+#define VIBRATING_M_PIN     2 // Pin where the vibrating motor is connected
 
 // Initiation of the objects
 TokenFeedback tokenFeedback = TokenFeedback(VIBRATING_M_PIN); // Connected on pin 2
 TokenConstraintEvent tokenConstraint = TokenConstraintEvent();
-TokenSoloEvent tokenSolo = TokenSoloEvent(ACC_INT1_PIN);
+TokenSoloEvent tokenSolo = TokenSoloEvent(ACC_INT1_PIN); // Connected on pin 4
 TokenTokenEvent tokenToken = TokenTokenEvent();
-
-// Color detection sensor
-tcs34725 rgb_sensor;
 
 void setup(void) 
 {
@@ -78,16 +80,17 @@ void setup(void)
   // Enable interrupts :
   interrupts();
 
-  if(!rgb_sensor.begin())
-  {
-      Serial.println("Problem color sensor");
-  }
+  // Config of the rgb_sensor
+  //tokenConstraint.sensorConfig();
   
   // Config of the accelerometer
   tokenSolo.accelConfig();
 
   // Config of the capacitive sensor
   tokenToken.capConfig();
+
+  // Config of the LED matrix
+  tokenFeedback.matrixConfig();
   
   // Configure the RFduino BLE properties
   RFduinoBLE.deviceName = "RFduino";
@@ -95,10 +98,7 @@ void setup(void)
 
   // Start the BLE stack
   RFduinoBLE.begin();
-
-  // Set the address of the led matrix
-  tokenFeedback.matrix.begin(0x70);
-  tokenFeedback.displayX();
+  
   Serial.println("Setup OK!");
 }
     
@@ -134,17 +134,23 @@ void loop(void)
       shake = 0;
     }
 
-/************************************************************/
-    // Sector detection :
-    if (inactivity||1) 
+    if(tokenSolo.tiltComputation())
     {
-      rgb_sensor.getData();
+      Serial.println("TILT");
+      sendData[0] = TILT;
+      RFduinoBLE.send((char*) sendData, 1);
     }
-    Serial.println(rgb_sensor.ct);
-    Serial.println("Hi");
+
+/************************************************************/
+    // Sector detection if the token is on the board
+    if (inactivity) 
+    {
+      tokenConstraint.rgb_sensor.getData();
+    }
+    //Serial.println(tokenConstraint.rgb_sensor.ct);
 
     // Location of the pawn in function of the color temperature (ct)
-    current_sector_ID = tokenConstraint.locate(current_sector_ID, rgb_sensor.ct); 
+    current_sector_ID = tokenConstraint.locate(current_sector_ID, tokenConstraint.rgb_sensor.ct); 
 
     // Sends sectors ID of the sector that has been left and the sector that has been reached
     if (current_sector_ID != last_sector_ID) {
@@ -156,14 +162,9 @@ void loop(void)
         // Update sector_ID variables
         last_sector_ID = current_sector_ID;
     }
+    
 /************************************************************/
-    if(tokenSolo.tiltComputation())
-    {
-      Serial.println("TILT");
-      sendData[0] = TILT;
-      RFduinoBLE.send((char*) sendData, 1);
-    }
-
+    // Detection of the token token event
     tokenToken.capTestProximity(&face1); 
     if(face1==1)
     {
@@ -172,6 +173,8 @@ void loop(void)
       RFduinoBLE.send((char*) sendData, 1);
       face1 = 0;
     }
+    
+/************************************************************/
     delay(500); // Important delay, do not delete it !
 }
 
@@ -294,4 +297,3 @@ void parse(uint8_t command) {
             send_uint8(sendData, 1);
     }
 }
-

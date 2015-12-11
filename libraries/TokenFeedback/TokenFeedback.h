@@ -14,6 +14,8 @@ class TokenFeedback {
 		void displayCount();
 		void displayX();
 		void displayDigit(int digit);
+		void matrixConfig();
+		
 		Adafruit_8x8matrix matrix;
 		
 	  private:

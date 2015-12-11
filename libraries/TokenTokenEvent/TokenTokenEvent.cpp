@@ -17,11 +17,12 @@ void TokenTokenEvent::capConfig()
 	ref1 = cap.filteredData(6);
 }
 
-bool TokenTokenEvent::capTestProximity()
+void TokenTokenEvent::capTestProximity(int* face1)
 {
 	if(cap.filteredData(6) < ref1 - 12)
 	{
 		Serial.println("Token-Token on face 1");
+		*face1 = 1;
 	}
 }
 

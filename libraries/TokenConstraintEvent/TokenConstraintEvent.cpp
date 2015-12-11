@@ -2,7 +2,15 @@
    
 TokenConstraintEvent::TokenConstraintEvent()
 {
+	tcs34725 rgb_sensor = tcs34725();
+}
 
+void TokenConstraintEvent::sensorConfig()
+{
+	if(!rgb_sensor.begin())
+	{
+		Serial.println("Problem color sensor");
+	}
 }
 
 uint8_t TokenConstraintEvent::locate(uint8_t current_sector_ID, float ct)
