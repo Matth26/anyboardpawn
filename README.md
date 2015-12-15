@@ -16,7 +16,7 @@ The folder *demo_application_evothing* contains all the files needed for the dem
 * LED display ([datasheet](https://www.sparkfun.com/datasheets/Components/MPR121.pdf), [Adafruit product](https://www.adafruit.com/products/870))
 
 Connections :
-![Schematic](schematic_fritzing)
+![Schematic](https://github.com/Matth26/anyboardpawn/blob/master/schematic_fritzing.png)
 
 ## libraries
 In order to use all the components listed in the hardware part, some Adafruit's libraries have been used. These libraries are includes in the four libraries that are in the *libraries* folder.
