@@ -15,7 +15,6 @@ The folder *demo_application_evothing* contains all the files needed for the dem
 * Capacitive sensor MPR121 ([datasheet](https://www.sparkfun.com/datasheets/Components/MPR121.pdf))
 * LED display ([datasheet](https://www.sparkfun.com/datasheets/Components/MPR121.pdf), [Adafruit product](https://www.adafruit.com/products/870))
 
-Connections :
 ![Schematic](https://github.com/Matth26/anyboardpawn/blob/master/schematic_fritzing.png)
 
 ## libraries
