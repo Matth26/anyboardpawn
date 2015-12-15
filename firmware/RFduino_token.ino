@@ -142,7 +142,7 @@ void loop(void)
     }
 
 /************************************************************/
-    // Sector detection if the token is on the board
+ /*   // Sector detection if the token is on the board
     if (inactivity) 
     {
       tokenConstraint.rgb_sensor.getData();
@@ -234,7 +234,8 @@ void parse(uint8_t command) {
     // Sets the command as the first data to send
     sendData[0] = command;
 
-    switch (command) {
+    switch (command) 
+    {
         case GET_NAME:
             send_string(GET_NAME, NAME);
             break;
