@@ -2,10 +2,10 @@
 This GitHub repository contains all the files that are required for the pawn token of AnyBoard project.
 
 ## firmware
-The folder *firmware* contains the RFduino program of the pawn. This folder contains four libraries that have to be copy and paste in the Arduino's *libraries* folder.
+The folder *firmware* contains the RFduino program of the pawn. This folder contains four libraries that have to be copied and pasted in the Arduino's *libraries* folder.
 
-## demo_application_evothing
-The folder *demo_application_evothing* contains all the files needed for the demo application. This application is made with evothing. 
+## demo_application_evothings
+The folder *demo_application_evothings* contains all the files needed for the demo application. This application is made with evothings. In order to use this application, just follow this [tutorial](https://evothings.com/getting-started-with-evothings-studio-in-90-seconds/)
 
 ## hardware
 * RFduino ([website](http://www.rfduino.com/), [GitHub](https://github.com/RFduino/RFduino))
@@ -35,13 +35,9 @@ For the TCS34725 used with an autorage mechanism the Adafruit library is used ([
 ### Adafruit_GFX
 For the LED display the Adafruit_GFX library is used ([Adafruit_GFX](https://github.com/adafruit/Adafruit-GFX-Library))
 
-### Adafruit_lED_backpack
+### Adafruit_LED_backpack
 And the Adafruit_lED_backpack library is also required ([Adafruit_lED_backpack](https://github.com/adafruit/Adafruit-LED-Backpack-Library))
 
 ## examples
-In the folder *examples* few arduino sketch example can be found. These programs are example programs using the accelerometer ADXL345. In order to run those example, the libraries contained in the folder */examples/libraries* have to be copy and paste in the Arduino's *libraries* folder.
+In the folder *examples* few arduino sketch example can be found. These programs are example programs using the accelerometer ADXL345. In order to run those example, the libraries contained in the folder */examples/libraries* have to be copied and pasted in the Arduino's *libraries* folder.
 
-### acc_taps_detection_example
-### acc_taps_detection_with_vibrating_motor_example
-### acc_activity_detection
-### acc_shake_and_taps_detection
