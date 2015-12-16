@@ -1,3 +1,13 @@
+/**************************************************************************
+# 	NAME: TokenTokenEvent.h
+# 	AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
+# 	DATE: 16/12/2015
+# 	LICENSE: MIT (cf. github main repository)
+#
+# 	Header of the library which manages the Token-token events
+#
+**************************************************************************/
+
 #ifndef TokenTokenEvent_h
 #define TokenTokenEvent_h
 
@@ -15,10 +25,10 @@ class TokenTokenEvent {
 		void capTestProximity(int* face1);
 		Adafruit_MPR121 cap;
 		
-		int ref1;
-		int ref2;
-		int ref3;
-		int ref4;
+		int ref1; // reference for the face 1
+		int ref2; // reference for the face 2
+		int ref3; // reference for the face 3
+		int ref4; // reference for the face 4
 	  private:
 	
 };

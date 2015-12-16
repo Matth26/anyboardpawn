@@ -1,3 +1,13 @@
+/**************************************************************************
+# 	NAME: TokenSoloEvent.h
+# 	AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
+# 	DATE: 16/12/2015
+# 	LICENSE: MIT (cf. github main repository)
+#
+# 	Header of the library which manages the Token solo events
+#
+**************************************************************************/
+
 #ifndef TokenSoloEvent_h
 #define TokenSoloEvent_h
 

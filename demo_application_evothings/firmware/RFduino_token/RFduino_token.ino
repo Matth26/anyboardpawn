@@ -1,3 +1,13 @@
+/********************************************************
+# NAME: RFduino_token.ino
+# AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
+# DATE: 16/12/2015
+# LICENSE: MIT (cf. github main repository)
+#
+# Firmware of the pawn token in the AnyBoard project.
+#
+********************************************************/
+
 #include <Wire.h>
 #include <WInterrupts.h>
 #include <RFduinoBLE.h>
@@ -40,10 +50,10 @@ const uint8_t LED_BLINK            = 130;
 const uint8_t READ_COLOR           = 136;
 const uint8_t MOVE                 = 194;
 const uint8_t TTEVENT              = 195;
-const uint8_t VIBRATE 			       = 200;
-const uint8_t TAP				           = 201;
-const uint8_t DOUBLE_TAP		       = 202;
-const uint8_t SHAKE				         = 203;
+const uint8_t VIBRATE 			   = 200;
+const uint8_t TAP				   = 201;
+const uint8_t DOUBLE_TAP		   = 202;
+const uint8_t SHAKE				   = 203;
 const uint8_t TILT                 = 204;
 const uint8_t COUNT                = 205;
 const uint8_t DISPLAY_X            = 206;
@@ -153,7 +163,8 @@ void loop(void)
     current_sector_ID = tokenConstraint.locate(current_sector_ID, tokenConstraint.rgb_sensor.ct); 
 
     // Sends sectors ID of the sector that has been left and the sector that has been reached
-    if (current_sector_ID != last_sector_ID) {
+    if (current_sector_ID != last_sector_ID) 
+	{
         sendData[0] = MOVE;
         sendData[1] = current_sector_ID;
         sendData[2] = last_sector_ID;
@@ -179,17 +190,20 @@ void loop(void)
 }
 
 // Code that executes everytime token is being connected to
-void RFduinoBLE_onConnect() {
+void RFduinoBLE_onConnect() 
+{
     connected = true;
 }
 
 // Code that executes everytime token is being disconnected from
-void RFduinoBLE_onDisconnect() {
+void RFduinoBLE_onDisconnect() 
+{
     connected = false;
 }
 
 // Sends data to the connected client
-void send_uint8(uint8_t *data, int length) {
+void send_uint8(uint8_t *data, int length) 
+{
     char charData[length];
     for (i = 0; i < length; i++) {
         charData[i] = data[i];
@@ -198,7 +212,8 @@ void send_uint8(uint8_t *data, int length) {
 }
 
 // Sends data (uint8 + String) to the connected client
-void send_string(uint8_t command, char* string) {
+void send_string(uint8_t command, char* string) 
+{
     len = strlen(string);
     sendData[0] = command;
     for (i = 0; i < len; i++) {
@@ -208,8 +223,8 @@ void send_string(uint8_t command, char* string) {
 }
 
 // Code to run upon receiving data over bluetooth
-void RFduinoBLE_onReceive(char *data, int length) {
-
+void RFduinoBLE_onReceive(char *data, int length) 
+{
     // Stores the first integer to cmd variable
     cmd = data[0];
 
@@ -226,8 +241,8 @@ void RFduinoBLE_onReceive(char *data, int length) {
 }
 
 // Executes command
-void parse(uint8_t command) {
-
+void parse(uint8_t command) 
+{
     // Resets the outcoming data array
     memset(sendData, 0, sizeof(sendData));
 

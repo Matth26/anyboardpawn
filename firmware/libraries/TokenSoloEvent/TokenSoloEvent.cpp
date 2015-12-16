@@ -1,5 +1,18 @@
+/**************************************************************************
+# 	NAME: TokenSoloEvent.cpp
+# 	AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
+# 	DATE: 16/12/2015
+# 	LICENSE: MIT (cf. github main repository)
+#
+# 	Library which manages the Token solo events
+#
+**************************************************************************/
+
 #include "TokenSoloEvent.h"
    
+/**************************************************************************
+#	Constructor, receive the accelerometer's pin
+**************************************************************************/
 TokenSoloEvent::TokenSoloEvent(int pin_accel)
 :_pin_accel(pin_accel)
 {
@@ -10,6 +23,9 @@ TokenSoloEvent::TokenSoloEvent(int pin_accel)
 	pinMode(_pin_accel, INPUT);
 }
 
+/**************************************************************************
+#	Initiate the sensor
+**************************************************************************/
 void TokenSoloEvent::accelConfig()
 {
 	/* Initialise the sensor */
@@ -50,6 +66,11 @@ void TokenSoloEvent::accelConfig()
     accel.readRegister(ADXL345_REG_INT_SOURCE);
 }
 
+/**************************************************************************
+#	Receive bit from the data register of the accelerometer and compute
+#	them in order to know if the accelerometer is active/inactive/shaken/
+#	tilt/tap/double tap
+**************************************************************************/
 void TokenSoloEvent::accelComputation(int* tab, int bit3, int bit4, int bit5, int bit6, int* inactivity, int* single_tap, int* double_tap, int* shake)
 {
       if(bit5) 
@@ -94,6 +115,9 @@ void TokenSoloEvent::accelComputation(int* tab, int bit3, int bit4, int bit5, in
       }
 }
 
+/**************************************************************************
+#	Return the acceleration value on x axis
+**************************************************************************/
 int TokenSoloEvent::accelGetX()
 {
 	/* Get a new sensor event */ 
@@ -106,6 +130,9 @@ int TokenSoloEvent::accelGetX()
 	return event.acceleration.x;
 }
 
+/**************************************************************************
+#	Return the acceleration value on y axis
+**************************************************************************/
 int TokenSoloEvent::accelGetY()
 {
 	/* Get a new sensor event */ 
@@ -118,6 +145,9 @@ int TokenSoloEvent::accelGetY()
 	return event.acceleration.y;
 }
 
+/**************************************************************************
+#	Return the acceleration value on z axis
+**************************************************************************/
 int TokenSoloEvent::accelGetZ()
 {
 	/* Get a new sensor event */ 
@@ -130,6 +160,9 @@ int TokenSoloEvent::accelGetZ()
 	return event.acceleration.z;
 }
 
+/**************************************************************************
+#	Return true if the accelerometer is tilted
+**************************************************************************/
 bool TokenSoloEvent::tiltComputation()
 {
 	return(abs(accelGetX())> 7 || abs(accelGetY()) > 7);

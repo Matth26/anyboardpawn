@@ -1,10 +1,26 @@
+/**************************************************************************
+# 	NAME: TokenConstraintEvent.cpp
+#	AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
+# 	DATE: 16/12/2015
+# 	LICENSE: MIT (cf. github main repository)
+#
+# 	Library which manages the Token constraint events
+#
+**************************************************************************/
+
 #include <TokenConstraintEvent.h>
    
+/**************************************************************************
+#	Constructor
+**************************************************************************/   
 TokenConstraintEvent::TokenConstraintEvent()
 {
 	tcs34725 rgb_sensor = tcs34725();
 }
 
+/**************************************************************************
+#	Initiate the sensor
+**************************************************************************/
 void TokenConstraintEvent::sensorConfig()
 {
 	if(!rgb_sensor.begin())
@@ -13,6 +29,10 @@ void TokenConstraintEvent::sensorConfig()
 	}
 }
 
+/**************************************************************************
+#	Receive the color temperature and the current sector ID and return the
+#	new sector ID.
+**************************************************************************/
 uint8_t TokenConstraintEvent::locate(uint8_t current_sector_ID, float ct)
 {
 	if (ct > 2500 && ct < 2900)

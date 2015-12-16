@@ -1,3 +1,10 @@
+/**************************************************************************
+# 	NAME: rfduino.evothings.bluetooth.js
+# 	AUTHOR: Tomas Fagerbekk
+#	CONTRIBUTOR: Matthias Monnier
+#
+**************************************************************************/
+
 "use strict";
 
 /*

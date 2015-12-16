@@ -1,5 +1,18 @@
+/**************************************************************************
+# 	NAME: TokenFeedback.cpp
+# 	AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
+# 	DATE: 16/12/2015
+# 	LICENSE: MIT (cf. github main repository)
+#
+# 	Library which manages the Token feedbacks
+#
+**************************************************************************/
+
 #include "TokenFeedback.h"
-   
+
+/**************************************************************************
+#	Constructor, receive the vibrating motor's pin
+**************************************************************************/
 TokenFeedback::TokenFeedback(int pin_vibrating_motor)
 :_pin_motor(pin_vibrating_motor)
 {
@@ -8,11 +21,18 @@ TokenFeedback::TokenFeedback(int pin_vibrating_motor)
 	
 	Adafruit_8x8matrix* matrix = new Adafruit_8x8matrix();
 }
-  
+ 
+/**************************************************************************
+#	Initiate the sensor
+**************************************************************************/
 void TokenFeedback::matrixConfig()
 {
 	matrix.begin(0x70);
 }
+
+/**************************************************************************
+#	Receive a duration in ms, the motor vibrate during this duration
+**************************************************************************/
 void TokenFeedback::vibrate(int ms)
 {
 	//Serial.println("Vibrate");
@@ -21,16 +41,25 @@ void TokenFeedback::vibrate(int ms)
 	digitalWrite(_pin_motor, LOW);
 }
 
+/**************************************************************************
+#	Make a short vibration
+**************************************************************************/
 void TokenFeedback::vibrateShort()
 {
 	vibrate(500);
 }
 
+/**************************************************************************
+#	Make a long vibration
+**************************************************************************/
 void TokenFeedback::vibrateLong()
 {
 	vibrate(1000);
 }
 
+/**************************************************************************
+#	Display the digits from 0 to 9 on the screen
+**************************************************************************/
 void TokenFeedback::displayCount()
 {
   int i;
@@ -45,6 +74,9 @@ void TokenFeedback::displayCount()
   
 }
 
+/**************************************************************************
+#	Display a cross on the screen
+**************************************************************************/
 void TokenFeedback::displayX()
 {
 	matrix.clear();
@@ -55,6 +87,9 @@ void TokenFeedback::displayX()
 	matrix.writeDisplay();
 }
 
+/**************************************************************************
+#	Display the argument digit on the screen
+**************************************************************************/
 void TokenFeedback::displayDigit(int digit)
 {
   matrix.clear();
