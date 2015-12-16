@@ -271,18 +271,20 @@
 
 <body ontouchstart="">
 	<div id="summary">
-		<h1>AnyboardJS Vibration Motor Demo</h1>
+		<h1>AnyboardPawn Demo</h1>
 		<div>
 			<p>
-				Demo of AnyToken library that makes use of: 1) Custom Bluetooth Driver, 2) Token discovery, 3) Token connecting, 4) AnyBoard Token listener
+				Demo of the pawn token that uses all type of events : 1) Token solo, 2) Token feedback, 3) Token-token, 4) Token constraint
 			</p>
 			<p>
-				Click on the black button to discover devices. Devices will pop up as new grey buttons with their name on it.
-				Click the name button to attempt to connect. It will turn <em>blue</em> to signal connection is pending, and <em>green</em> when connected. <em>Red</em> signals it being/having disconnected.
+				Turn on the token.
+				Click on the black button to discover devices.
+				Click on the RFduino name button to attempt to connect. It will turn <em>blue</em> to signal connection is pending, and <em>green</em> when connected. <em>Red</em> signals it being/having disconnected.
 			</p>
 
 			<p>
-				<em>PS: Clicking a green token will attempt to send {"device":"VIBRATE","event":"on","time":"2s"} to the token. This is adapted to work with LightBlue Bean with a certain firmware, and might not work.</em>
+				Click on the green boxes to trigger event on the token.
+				Interact with the token and the events will appear on the phone (light blue boxes will turn dark blue).
 			</p>
 		</div>
 
