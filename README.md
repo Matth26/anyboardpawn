@@ -42,9 +42,4 @@ And the Adafruit_lED_backpack library is also required ([Adafruit_lED_backpack](
 In the folder *examples* few arduino sketch example can be found. These programs are example programs using the accelerometer ADXL345. In order to run those example, the libraries contained in the folder */examples/libraries* have to be copied and pasted in the Arduino's *libraries* folder.
 
 ##License
-
-<<<<<<< HEAD
 See the licencse.txt file for license rights and limitations (Apache V2.0).
-=======
-See the license.txt file for license rights and limitations (MIT).
->>>>>>> 67bac2093d8e1e1cc6b3c7c6ec82823b5d216a46
