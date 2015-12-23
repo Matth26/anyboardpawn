@@ -43,4 +43,8 @@ In the folder *examples* few arduino sketch example can be found. These programs
 
 ##License
 
+<<<<<<< HEAD
 See the licencse.txt file for license rights and limitations (Apache V2.0).
+=======
+See the license.txt file for license rights and limitations (MIT).
+>>>>>>> 67bac2093d8e1e1cc6b3c7c6ec82823b5d216a46
