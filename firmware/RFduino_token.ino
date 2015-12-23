@@ -2,7 +2,7 @@
 # NAME: RFduino_token.ino
 # AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
 # DATE: 16/12/2015
-# LICENSE: MIT (cf. github main repository)
+# LICENSE: Apache V2.0(cf. file license.txt in the main repository)
 #
 # Firmware of the pawn token in the AnyBoard project.
 #

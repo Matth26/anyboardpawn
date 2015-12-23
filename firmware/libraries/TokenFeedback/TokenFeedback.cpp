@@ -2,7 +2,7 @@
 # 	NAME: TokenFeedback.cpp
 # 	AUTHOR: Matthias Monnier (matthias.monnier@gmail.com)
 # 	DATE: 16/12/2015
-# 	LICENSE: MIT (cf. github main repository)
+# 	LICENSE: Apache V2.0(cf. file license.txt in the main repository)
 #
 # 	Library which manages the Token feedbacks
 #
